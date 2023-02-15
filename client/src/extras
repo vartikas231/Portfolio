@@ -1,0 +1,133 @@
+
+
+
+// export default function App() {
+//   return (
+//     <BrowserRouter>
+      
+//         <Routes>
+//            
+//            <Route path="/login" element={<Login />} />
+//            <Route path="/edit:id" element={<EditAbout />} />
+//            <Route path="/admin" element={<Admin />} />
+//            <Route path="/editEducation/:id" element={<EditEducation />} />
+//            <Route path="/editProject" element={<EditProjects />} />
+//            <Route path="/editAchievement" element={<EditAchievements />} />
+          
+        
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// }
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(<App />);
+
+
+
+
+// <Element className="Home">
+//         <Route exact path="/" element={<Header />} />
+//       </Element>
+//       <Element className="">
+//         <Route path="/" element={<About />} />
+//       </Element>
+//       <Element className="">
+//         <Route path="/" element={<Education />} />
+//       </Element>
+//       <Element className="">
+//         <Route path="/" element={<Projects />} />
+//       </Element>
+//       <Element className="">
+//         <Route path="/" element={<Achievements />} />
+//       </Element>
+//       <Element className="">
+//          <Route path="/" element={<Contact />} />
+//       </Element>
+
+
+
+
+// <Particles className="particleComp"
+//               height="400px"
+//               width="100%"
+//               params={{
+//                 particles: {
+//                   number: {
+//                     value: 90,
+//                     density: {
+//                       enable:false,
+//                       value_area:800,
+//                     }
+//                   }
+//                 },
+
+//                 "interactivity":{
+//                   "events":{
+//                     "onHover":{
+//                       "enable":true,
+//                       "mode":"repulse",
+//                     }
+//                   }
+//                 }
+//               }}
+//             />
+
+
+
+
+
+// <Route path="/" element={<Header />} />
+//         <Route path="/" element={<About />} />
+//         <Route path="/" element={<Education />} />
+//         <Route path="/" element={<Projects />} />
+//         <Route path="/" element={<Achievements />} />
+//         <Route path="/" element={<Contact />} />
+//         <Route path="/" element={<Footer />} />
+
+
+// <Navbar />
+
+// <Header />
+//             <About />
+//             <Education />
+//             <Projects />
+//             <Achievements />
+//             <Contact />
+//             <Footer />
+
+
+
+
+
+
+
+
+// <Navbar />
+//             <Element className="Home">
+//               {/* <Route path="/" element={<Header />} /> */}
+//               <Header />
+//             </Element>
+//             <Element className="About">
+//               {/* <Route path="/" element={<About />} /> */}
+//               <About />
+//             </Element>
+//             <Element className="Education">
+//               <Education />
+//               {/* <Route path="/" element={<Education />} /> */}
+//             </Element>
+//             <Element className="Projects">
+//               <Projects />
+//               {/* <Route path="/" element={<Projects />} /> */}
+//             </Element>
+//             <Element className="Achievements">
+//               <Achievements />
+//               {/* <Route path="/" element={<Achievements />} /> */}
+//             </Element>
+//             <Element className="Contact">
+//               <Contact />
+//               {/* <Route path="/" element={<Contact />} /> */}
+//             </Element>
+//             <Element className="Footer">
+//               <Footer/>
+//               {/* <Route path="/" element={<Contact />} /> */}
+//             </Element>
