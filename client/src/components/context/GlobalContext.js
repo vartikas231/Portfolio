@@ -3,6 +3,9 @@ import React, { createContext, useState, useEffect } from "react";
 
 export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
+const [isLogin,setIsLogin]=useState(false);
+
+
 const [projects ,setProjects]=useState([]);
 
   const [about, setAbout] = useState([]);
@@ -10,6 +13,36 @@ const [projects ,setProjects]=useState([]);
 const [education,setEducation]=useState([]);
 
 const [achievement,setAchievement]=useState([]);
+
+
+// checking token login
+const checkLogin=async ()=>{
+  const token=localStorage.getItem('tokenStore');
+  if (token) {
+    const verified = await axios.get(`/user/verify`, {
+      headers: { Authorization: token },
+    });
+    console.log(verified);
+    setIsLogin(verified.data);
+    if (verified == false) {
+      return localStorage.clear();
+    }
+  } else {
+    setIsLogin(false);
+  }
+}
+
+
+useEffect(()=>{
+  try{
+    checkLogin();
+
+  }catch(err){
+    console.log(err);
+  }
+},[])
+
+
 
   const fetchData = async () => {
     // for fetching about
@@ -49,8 +82,9 @@ const [achievement,setAchievement]=useState([]);
 
 const state = {
   about: [about, setAbout],
-  education:[education,setEducation],
-  achievement:[achievement,setAchievement]
+  education: [education, setEducation],
+  achievement: [achievement, setAchievement],
+  isLogin: [isLogin, setIsLogin],
 };
 
   return <DataContext.Provider value={state}>{children}</DataContext.Provider>;

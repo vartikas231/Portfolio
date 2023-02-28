@@ -3,10 +3,16 @@ import {Link ,useNavigate} from "react-router-dom"
 import Register from "./Register";
 import axios from 'axios';
 import './login.css';
+import { DataContext } from '../context/GlobalContext';
+
+
+
 const Login = () => {
-    const navigate=useNavigate();
+const navigate=useNavigate();
 const [user ,setUser]= useState({name:'',email :'',password:''});
 const [err,setErr]=useState('');
+const state=useContext(DataContext);
+const [isLogin,setIsLogin]=state.isLogin;
 
 // onchange inputs
 
@@ -27,10 +33,13 @@ const loginSubmit =async (e)=>{
       password: user.password,
     });
     setUser({name:'',email:'',password:''});
+localStorage.setItem('tokenStore',res.data.token);
+setIsLogin(true);
+
     setErr(res.data.msg);
    
 
-
+navigate("/admin");
   }catch(err){
 err.response.data.msg && setErr(err.response.data.msg)
   }
@@ -81,7 +90,7 @@ err.response.data.msg && setErr(err.response.data.msg)
 
         {/* Register */}
 
-        <Register/>
+        {/* <Register /> */}
       </>
     );
 };
