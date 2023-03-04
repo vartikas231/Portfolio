@@ -1,14 +1,12 @@
-// const { appendFile } = require('fs');
+  const router = require("express").Router();
 
-const router = require("express").Router();
-// require("../controlers/projectsCtrl");
 
 const projectSchema = require("../middlewares/models/projectModel");
 
 // .......................project..........................
 
 // get project
-router.get("/project", async (req, res) => {
+router.get('/project', async (req, res) => {
   try {
     const project = await projectSchema.find(req.body);
     res.json(project);
@@ -20,7 +18,7 @@ router.get("/project", async (req, res) => {
 
 
 // add /post about project
-router.post("/project", async (req, res) => {
+router.post('/project', async (req, res) => {
   try {
     const { title, product_id, description, images } = req.body;
     const project = new projectSchema({
@@ -35,16 +33,16 @@ router.post("/project", async (req, res) => {
   } catch (error) {
     res.status(500).json({ msg: error });
   }
-});
+})
 
 
 
 
 // get specific project by id
-router.get("/project/:id", async (req, res) => {
+router.get('/project/:id', async (req, res) => {
   try {
     let project = await projectSchema.findById(req.params.id);
-    res.json(projrct);
+    res.json(project);
   } catch (error) {
     res.status(500).json({ msg: error });
   }
@@ -54,7 +52,7 @@ router.get("/project/:id", async (req, res) => {
 
 
 // update specific project by id
-router.put("/project/update/:id", async (req, res) => {
+router.put('/project/update/:id', async (req, res) => {
   try {
     const { title, product_id, description, images } = req.body;
     const project = await projectSchema.findByIdAndUpdate(req.params.id, {
@@ -74,7 +72,7 @@ router.put("/project/update/:id", async (req, res) => {
 
 
 // delete specific project by id
-router.delete("/project/:id", async (req, res) => {
+router.delete('/project/:id', async (req, res) => {
      try {
        let project = await projectSchema.findByIdAndDelete(req.params.id);
 

@@ -1,6 +1,6 @@
 const router=require('express').Router();
-const cloudinary=require('cloudinary');
-const fs = require("fs");
+const cloudinary=require('cloudinary').v2;
+const fs = require('fs');
 
 
 
@@ -34,14 +34,14 @@ router.post('/upload',(req,res)=>{
           return res.status(400).json({ msg: "incorrect file format" })
         }
 
-        cloudinary.v2.uploader.upload(
+        cloudinary.uploader.upload(
           file.tempFilePath,
           {folder:"udemy"},
           async (err, result) => {
             if(err) throw err;
 
             removeTmp(file.tempFilePath);
-            res.json({public_id:result.public_id, url:result.secure_url});
+            res.json({public_id:result.public_id, url:result.secure_url})
           })
 
     } catch (error) {

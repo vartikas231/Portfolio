@@ -89,7 +89,7 @@ const [isLogin,setIsLogin]=state.isLogin;
             <li className="admin">
               <Link to="/admin">Admin</Link>
             </li>
-            <li onClick={logOutSubmit}><Link to ={isLogin? '/':'/login'}>{isLogin?"Logout":"login"}</Link></li>
+            <li onClick={()=>logOutSubmit}><Link to ={isLogin? '/':'/login'}>{isLogin ? "Logout" : "login"}</Link></li>
 
           </ul>
         </div>

@@ -7,11 +7,8 @@ const [isLogin,setIsLogin]=useState(false);
 
 
 const [projects ,setProjects]=useState([]);
-
-  const [about, setAbout] = useState([]);
-
+const [about, setAbout] = useState([]);
 const [education,setEducation]=useState([]);
-
 const [achievement,setAchievement]=useState([]);
 
 
@@ -24,7 +21,7 @@ const checkLogin=async ()=>{
     });
     console.log(verified);
     setIsLogin(verified.data);
-    if (verified == false) {
+    if (verified === false) {
       return localStorage.clear();
     }
   } else {
@@ -59,7 +56,9 @@ useEffect(()=>{
 
     // for fetching projects
     const res4 = await axios.get(`http://localhost:5000/project`);
-// setProjects(res)
+    setProjects(res4.data);
+    console.log(res4.data);
+
     // for fetching achievements
     const res3 = await axios.get(`http://localhost:5000/achievement`);
     //  console.log(res3.data);
@@ -85,6 +84,7 @@ const state = {
   education: [education, setEducation],
   achievement: [achievement, setAchievement],
   isLogin: [isLogin, setIsLogin],
+  projects:[projects,setProjects]
 };
 
   return <DataContext.Provider value={state}>{children}</DataContext.Provider>;
