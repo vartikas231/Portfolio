@@ -56,8 +56,8 @@ router.post('/destroy',(req,res)=>{
         if(!public_id){
             return res.status(400).json({msg:"no images selected"})
         }
-        cloudinary.v2.uploader.destroy(public_id,async(err,result)=>{
-            res.json({msg:"image destroyed"})
+        cloudinary.uploader.destroy(public_id,async(err,result)=>{
+            res.json({msg:"image deleted"})
         })
     } catch (error) {
         res.status(500).json({msg:error.message})

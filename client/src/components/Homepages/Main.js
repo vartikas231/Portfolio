@@ -12,7 +12,7 @@ import Education from "./Education";
 const Main = () => {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <Header />
       <About />
       <Education/>

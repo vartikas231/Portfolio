@@ -44,73 +44,60 @@ const ProjectsAdmin = () => {
 
   // delete image
 
-  const handleDestroy = async () => {
-    try {
-      await axios.post("/destroy", { public_id: images.public_id });
-      setImages(false);
-    } catch (error) {
-      console.log(error.response.data.msg);
-    }
-  };
+    const handleDestroy = async () => {
+      try {
+        await axios.post("/destroy", { public_id: images.public_id });
+        setImages(false);
+      } catch (error) {
+        console.log(error.response.data.msg);
+      }
+    };
 
-  // handle change input
+  //   // handle change input
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
 
     setProducts({ ...product, [name]: value });
-// console.log(product.description);
-// console.log(product.title);
-
-
+    console.log(product.description);
+    console.log(product.title);
   };
 
-// handle submit form
+  // handle submit form
 
-const handleSubmit =(e)=>{
-  e.preventDefault();
-  try {
-    axios.post('/project/',{...product,images})
-    .then(res=>{
-      setMessage(res.data.msg);
-      setTimeout(()=>{
-        setMessage('');
-      },2000)
-
-
-setProducts(initialState);
-setImages(false);
-
-
-    })
-  } catch (error) {
-    
-  }
-}
-
-const styleUpload={
-  display:images? 'block':'none' 
-}
-
-
-
-// fetching th data
-
-useEffect(()=>{
-  const fetchData=async ()=>{
+  const handleSubmit = (e) => {
+    e.preventDefault();
     try {
-      const res=await axios.get('/project');
-      setProjectData(res.data);
-      // console.log(res.data);
+      axios.post('/project/', { ...product, images }).then((res) => {
+        setMessage(res.data.msg);
+        setTimeout(() => {
+          setMessage("");
+        }, 2000)
 
+        setProducts(initialState);
+        setImages(false);
+      });
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const styleUpload = {
+    display:images? 'block' : 'none'
   }
-},[])
 
-// delete functonality
+  // fetching th data
 
-
+  useEffect(() => {
+    const fetchData = async() => {
+      try {
+        const res = await axios.get("http://localhost:5000/project");
+        setProjectData(res.data);
+        // console.log(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, []);
 
   return (
     <div className="same-component">
@@ -149,19 +136,17 @@ useEffect(()=>{
           />
 
           <div className="upload">
-            <input type="file" name="file" id="file_up"
-            onChange={handleUpload}
-             />
+            <input
+              type="file"
+              name="file"
+              id="file_up"
+              onChange={handleUpload}
+            />
 
             <div id="file_img" style={styleUpload}>
-            <img src={images ? images.url :''} alt=""/>
-              {/* <img
-                src="https://i.pinimg.com/236x/4b/95/33/4b953314e05a75107584c62f3d8fbeb3.jpg"
-                alt=""
-              /> */}
-
-
+              <img src={images ? images.url :''} alt=""/>
               <span onClick={handleDestroy}>X</span>
+
             </div>
           </div>
           <button>Add item</button>

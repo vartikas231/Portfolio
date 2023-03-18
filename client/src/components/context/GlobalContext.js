@@ -1,11 +1,10 @@
 import axios from "axios";
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from 'react';
 
 export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
+  
 const [isLogin,setIsLogin]=useState(false);
-
-
 const [projects ,setProjects]=useState([]);
 const [about, setAbout] = useState([]);
 const [education,setEducation]=useState([]);
@@ -17,11 +16,10 @@ const checkLogin=async ()=>{
   const token=localStorage.getItem('tokenStore');
   if (token) {
     const verified = await axios.get(`/user/verify`, {
-      headers: { Authorization: token },
-    });
+      headers: { Authorization:token}})
     console.log(verified);
     setIsLogin(verified.data);
-    if (verified === false) {
+    if (verified.data === false) {
       return localStorage.clear();
     }
   } else {
@@ -57,7 +55,7 @@ useEffect(()=>{
     // for fetching projects
     const res4 = await axios.get(`http://localhost:5000/project`);
     setProjects(res4.data);
-    console.log(res4.data);
+    // console.log(res4.data);
 
     // for fetching achievements
     const res3 = await axios.get(`http://localhost:5000/achievement`);

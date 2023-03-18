@@ -22,15 +22,21 @@ import { Route, Routes } from "react-router-dom";
 // import Element from "react-scroll";
 const App = () => {
   return (
-    
     <Routes>
-    
+      {/* <Route path="/" ><Navbar/></Route> */}
       <Route
         path="/"
         element={
           <div>
-          <Main/>
-          
+            <Navbar />
+            {/* <Main /> */}
+            <Header />
+            <About />
+            <Education />
+            <Projects />
+            <Achievements />
+            <Contact />
+            <Footer />
           </div>
         }
       />
@@ -41,7 +47,6 @@ const App = () => {
       <Route path="/editEducation/:id" element={<EditEducation />} />
       <Route path="/editProject" element={<EditProjects />} />
       <Route path="/editAchievement" element={<EditAchievements />} />
-      
     </Routes>
   );
 };

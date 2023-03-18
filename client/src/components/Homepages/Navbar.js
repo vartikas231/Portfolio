@@ -34,7 +34,7 @@ const [isLogin,setIsLogin]=state.isLogin;
 
   // close navbar
   const closeNavbar = () => {
-    if (toggle === true) {
+    if (toggle===true) {
       setToggle(false);
     }
   };
