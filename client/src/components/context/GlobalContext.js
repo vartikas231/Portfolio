@@ -31,6 +31,7 @@ const checkLogin=async ()=>{
 useEffect(()=>{
   try{
     checkLogin();
+    // fetchData();
 
   }catch(err){
     console.log(err);
@@ -40,9 +41,8 @@ useEffect(()=>{
 
 
   const fetchData = async () => {
-    // for fetching about
+
     const res1 = await axios.get(`http://localhost:5000/about`);
-    //  console.log(res1.data);
     setAbout(res1.data);
 
     // for fetching education

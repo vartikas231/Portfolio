@@ -25,8 +25,8 @@ router.post('/project', async (req, res) => {
       title,
       product_id,
       description,
-      images,
-    });
+      images
+    })
 
     await project.save();
     res.json({ msg: "Product added" });

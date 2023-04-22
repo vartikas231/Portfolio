@@ -41,13 +41,20 @@ a {
 }
 
 .particle {
+  background-color: aliceblue;
+   background-image: url("");
+   
+  background-repeat: no-repeat;
   position: relative;
   width: 100%;
   height: 100%;
+
 }
 
 .particleComp {
-  background-color: rgb(109, 109, 218);
+  /* background-color: rgb(2, 2, 255); */
+  height:"400px";
+  width:"100%";
 }
 
 .fullName {
@@ -68,11 +75,7 @@ a {
     0 0 0.2em rgb(17, 17, 17);
 }
 
-/* .fullName h2{
-  color: white ;
-  letter-spacing: 0.1rem;
-  font-size: italic;
-} */
+
 
 .cv {
   position: absolute;

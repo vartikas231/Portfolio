@@ -1,11 +1,8 @@
-import Header from "./components/Homepages/Header";
-import Footer from "./components/Homepages/Footer";
+import * as React from 'react';
+import {useContext} from 'react';
+import './App.css'
 import Navbar from "./components/Homepages/Navbar";
-import About from "./components/Homepages/About";
-import Education from "./components/Homepages/Education";
-import Achievements from "./components/Homepages/Achievements";
-import Projects from "./components/Homepages/Projects";
-import Contact from "./components/Homepages/Contact";
+
 import Login from "./components/Homepages/Login";
 import Main from "./components/Homepages/Main";
 // admin components
@@ -19,35 +16,44 @@ import EditAchievements from "./components/editComponents/EditAchievement";
 
 import { Route, Routes } from "react-router-dom";
 
-// import Element from "react-scroll";
-const App = () => {
-  return (
-    <Routes>
-      {/* <Route path="/" ><Navbar/></Route> */}
-      <Route
-        path="/"
-        element={
-          <div>
-            <Navbar />
-            {/* <Main /> */}
-            <Header />
-            <About />
-            <Education />
-            <Projects />
-            <Achievements />
-            <Contact />
-            <Footer />
-          </div>
-        }
-      />
 
-      <Route path="/login" element={<Login />} />
-      <Route path="/edit/:id" element={<EditAbout />} />
-      <Route path="/admin" element={<Admin />} />
-      <Route path="/editEducation/:id" element={<EditEducation />} />
-      <Route path="/editProject" element={<EditProjects />} />
-      <Route path="/editAchievement" element={<EditAchievements />} />
-    </Routes>
+
+import { DataContext } from './components/context/GlobalContext';
+const App = () => {
+
+const state=useContext(DataContext);
+const [isLogin,setIsLogin]=state.isLogin;
+
+
+  return (
+    <>
+      <Navbar />
+      <Routes>
+      <Route path="/" element={<Main/>}/>
+      <Route
+        path="/login"
+        element={<Login />}
+        render={() => (isLogin ? <Admin /> : <Login setIsLogin={setIsLogin} />)}
+      />
+      <Route
+        exact
+        path="/admin"
+        render={() => (isLogin ? <Admin /> : <Login />)}
+        element={<Admin />}
+      />
+      
+     <Route exact path="/edit/:id" element={<EditAbout />} />
+
+        <Route exact path="/editEducation/:id" element={<EditEducation />} />
+           <Route exact path="/editProject/:id" element={<EditProjects />} />
+        <Route
+          exact
+          path="/editAchievement/:id"
+          element={<EditAchievements />}
+        />
+      </Routes>
+       
+    </>
   );
 };
 

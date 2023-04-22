@@ -14,7 +14,7 @@ const ProjectsAdmin = () => {
   const [messageCond, setMessageCond] = useState(false);
   const [projectData, setProjectData] = useState([]);
 
-  // upload image functionality
+//   // upload image functionality
 
   const handleUpload = async (e) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ const ProjectsAdmin = () => {
 
       let formData = new FormData();
       formData.append("file", file);
-      const res = await axios.post("/upload", formData, {
+      const res = await axios.post('/upload', formData, {
         headers: { "content-type ": "multipart/form-data" },
       });
 
@@ -42,7 +42,7 @@ const ProjectsAdmin = () => {
     }
   };
 
-  // delete image
+//   // delete image
 
     const handleDestroy = async () => {
       try {
@@ -62,12 +62,13 @@ const ProjectsAdmin = () => {
     console.log(product.title);
   };
 
-  // handle submit form
+//   // handle submit form
 
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      axios.post('/project/', { ...product, images }).then((res) => {
+      
+      axios.post('http://localhost:5000/project', { ...product, images }).then((res) => {
         setMessage(res.data.msg);
         setTimeout(() => {
           setMessage("");
@@ -97,7 +98,28 @@ const ProjectsAdmin = () => {
         console.log(error);
       }
     }
+      fetchData();
   }, []);
+
+
+
+
+  // delete functionality
+  const deleteProject=(id)=>{
+
+axios.delete(`http://localhost:5000/project/${id}`).then((res) => {
+  setMessageCond(true);
+  setMessage(res.data.msg);
+  setTimeout(() => {
+    setMessageCond(false);
+    setMessage("");
+  }, 2000);
+});
+
+// delete from client uI
+const filteredProject = projectData.filter((item) => item._id !== id);
+setProjectData(filteredProject);
+  }
 
   return (
     <div className="same-component">
@@ -144,52 +166,86 @@ const ProjectsAdmin = () => {
             />
 
             <div id="file_img" style={styleUpload}>
-              <img src={images ? images.url :''} alt=""/>
+              <img src={images ? images.url : ""} alt="" />
               <span onClick={handleDestroy}>X</span>
-
             </div>
           </div>
+          {/*  */}
+          {/*
+          
+          
+          {/*  */}
+          {/*  */}
+          {/*  */}
+          {/* */}
+          {/*  */}
+          {/*
+          
+          
+          {/*  */}
+          {/*  */}
+          {/*  */}
+          {/* */}
           <button>Add item</button>
+          {/*  */}
+          {/*
+          
+          
+          {/*  */}
+          {/*  */}
+          {/*  */}
+          {/* */}
+          {/*  */}
+          {/*
+          
+          
+          {/*  */}
+          {/*  */}
+          {/*  */}
+          {/* */}
         </form>
       </div>
 
       <div className="same-item">
         <div className="about-info">
-          <div className="projects-admin">
-            <div className="icons">
-              <Link to={"/editProject"}>
-                <i className="fas fa-edit"></i>
-              </Link>
+          {projectData.map((item) => (
+            <div className="projects-admin" key={item._id}>
+              <div className="icons">
+                <Link to={`/editProject/${item._id}`}>
+                  <i className="fas fa-edit"></i>
+                </Link>
 
-              <i className="fas fa-trash"></i>
-            </div>
-
-            {/* single project */}
-
-            <div className="single-project">
-              <div className="single-project-img">
-                <img
-                  src="https://i.pinimg.com/236x/49/1b/e3/491be313507162f0fc7f908391585dab.jpg"
-                  alt=""
-                />
+                <i
+                  className="fas fa-trash"
+                  onClick={() => deleteProject(item._id)}
+                ></i>
               </div>
 
-              <div className="single-project-info">
-                <h3>Mountains</h3>
+              {/* single project */}
 
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                  volutpat luctus lorem, nec maximus lacus semper vel. Nunc
-                  porttitor arcu nec dolor porta, in facilisis purus elementum.
-                  Praesent mollis metus orci, eget convallis leo laoreet in.
-                  Orci varius natoque penatibus et magnis dis parturient montes,
-                  nascetur ridiculus mus.
-                </p>
+              <div className="single-project">
+                <div className="single-project-img">
+                  <img src={item.images.url} alt="" />
+                </div>
+
+                <div className="single-project-info">
+                  <h3>{item.title}</h3>
+
+                  <p>{item.description}</p>
+                </div>
               </div>
-            </div>
 
-            <h3 className="item-delete-tab">X</h3>
-          </div>
+              <h3
+                className={
+                  setMessageCond
+                    ? "new-delete item-delete-tab "
+                    : "item-delete-tab"
+                }
+              >
+                {message}
+              </h3>
+            </div>
+          ))}
         </div>
       </div>
     </div>

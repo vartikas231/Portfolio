@@ -46,13 +46,14 @@ const [isLogin,setIsLogin]=state.isLogin;
 
   const logOutSubmit=()=>{
     localStorage.clear();
+    setIsLogin(false);
   }
 
   return (
     <div className="nav-container">
       <nav>
         <div className="logoBtn">
-          <Link to="/" onClick={() => scrollToElement('Home')}>
+          <Link to="/" onClick={() => scrollToElement("Home")}>
             <img src={Logo} alt="" />
           </Link>
 
@@ -68,7 +69,7 @@ const [isLogin,setIsLogin]=state.isLogin;
             className={toggle ? "new-links links" : "links"}
             onClick={closeNavbar}
           >
-            <li onClick={() => scrollToElement('Home')}>
+            {/* <li onClick={() => scrollToElement('Home')}>
               <Link to="/">Home</Link>
             </li>
             <li onClick={() => scrollToElement('About')}>
@@ -88,9 +89,38 @@ const [isLogin,setIsLogin]=state.isLogin;
             </li>
             <li className="admin">
               <Link to="/admin">Admin</Link>
-            </li>
-            <li onClick={()=>logOutSubmit}><Link to ={isLogin? '/':'/login'}>{isLogin ? "Logout" : "login"}</Link></li>
+            </li> */}
 
+            {/* disable it afterwards and change upr vaala- theek krna hai use  */}
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/">About</Link>
+            </li>
+            <li>
+              <Link to="/">Education</Link>
+            </li>
+            <li>
+              <Link to="/">Achievements</Link>
+            </li>
+            <li>
+              <Link to="/">Projects</Link>
+            </li>
+            {/* <li>
+              <Link to="/admin">Admin</Link>
+            </li> */}
+
+            {/* jb theek ho jaega to disable upr vaala admin and enable niche vaala */}
+            <li className={isLogin? '':"adminLi"}>
+              <Link to={isLogin ? "/admin/":"/"}>{isLogin ? <div className="admin">Admin</div>:''}</Link>
+            </li>
+
+            <li onClick={logOutSubmit}>
+              <Link to={isLogin ? "/" : "/login"}>
+                {isLogin ? "Logout" : "Login"}
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>

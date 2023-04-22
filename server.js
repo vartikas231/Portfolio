@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const PORT = process.env.PORT || 5000;
 const fileUpload = require("express-fileupload");
+const path =require('path')
 
 
 
@@ -15,7 +16,7 @@ app.use(
   fileUpload({
     useTempFiles: true,
   })
-);
+)
 
 // connect to mongodb
 const URI = process.env.MONGO_URL;
@@ -33,13 +34,25 @@ mongoose
   });
 
 // routes
-app.use("/contact", require("./routes/contactRoute"));
-app.use("/user", require("./routes/userRoute"));
-app.use("/", require("./routes/aboutRoute"));
-app.use("/", require("./routes/educRoute"));
-app.use("/", require("./routes/achievementRoute"));
-app.use("/", require("./routes/projectRoute"));
-app.use("/", require("./routes/upload"));
+app.use('/contact', require("./routes/contactRoute"));
+app.use('/user', require("./routes/userRoute"));
+app.use('/', require("./routes/aboutRoute"));
+app.use('/', require("./routes/educRoute"));
+app.use('/', require("./routes/achievementRoute"));
+app.use('/', require("./routes/projectRoute"));
+app.use('/', require("./routes/upload"));
+
+
+
+// static assets
+
+if(process.env.NODE_ENV==='production'){
+  app.use(express.static('client/build'));
+  app.get('*' ,(req,res)=>res.sendFile(path.resolve(__dirname,'client','build','index.html')))
+}
+
+
+
 
 app.listen(PORT, () => {
   console.log(`Server listening at port: ${PORT}`);

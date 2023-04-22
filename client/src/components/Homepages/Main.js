@@ -5,21 +5,27 @@ import Contact from "./Contact";
 import Achievements from "./Achievements";
 
 import React from "react";
-import Navbar from "./Navbar";
+import { Element } from "react-scroll";
+
+
 import Footer from "./Footer";
 import Education from "./Education";
 
 const Main = () => {
   return (
     <div>
-      {/* <Navbar /> */}
-      <Header />
+      <Element>
+        <Header />
+      </Element>
       <About />
-      <Education/>
+      <Education />
       <Projects />
-      <Achievements />
+      <Element>
+        <Achievements />
+      </Element>
+
       <Contact />
-      <Footer/>
+      <Footer />
     </div>
   );
 };

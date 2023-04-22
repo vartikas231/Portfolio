@@ -2,40 +2,16 @@ import React from "react";
 import profile from "../../images/vartika.jpg";
 import "../../App.css";
 import Typewritter from "typewriter-effect";
-import Particles from "react-tsparticles";
+// import Particles from "react-tsparticles";
 
+import ParticleEffect from "./ParticleEffect";
 const Header = () => {
   return (
     <React.Fragment>
       <div className="header">
         <div className="particle">
         
-          <Particles
-            className="particleComp"
-            height="400px"
-            width="100%"
-            params={{
-              particles: {
-                number: {
-                  value: 90,
-                  density: {
-                    enable: false,
-                    value_area: 800,
-                  },
-                },
-              },
-
-              interactivity: {
-                events: {
-                  onHover: {
-                    enable: true,
-                    mode: "repulse",
-                  },
-                },
-              },
-            }
-            }
-          />
+          {/* <ParticleEffect/> */}
 
           <div className="fullname">
             <h1>

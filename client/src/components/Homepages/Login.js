@@ -8,6 +8,7 @@ import { DataContext } from '../context/GlobalContext';
 
 
 const Login = () => {
+  
 const navigate=useNavigate();
 const [user ,setUser]= useState({name:'',email :'',password:''});
 const [err,setErr]=useState('');
