@@ -1,0 +1,30 @@
+<Navbar/>
+<Element className="Home">
+    <Route exact path="/" component="{Header}"/>
+</Element>
+<Element className="About">
+    <Route exact path="/" component="{About}"/>
+</Element>
+<Element className="Education">
+    <Route exact path="/" component="{Education}"/>
+</Element>
+<Element className="Projects">
+    <Route exact path="/" component="{Projects}"/>
+</Element>
+<Element className="Achievement">
+    <Route exact path="/" component="{Achievement}"/>
+</Element>
+<Element className="Contact">
+    <Route exact path="/" component="{Contact}"/>
+</Element>
+
+<Route exact path="/login" component="{Login}"/>
+<Route exact path="/admin" component="{Admin}"/>
+<Route exact path="/edit/:id" component="{EditAbout}"/>
+<Route exact path="/editEducation/:id" component="{EditEducation}"/>
+<Route exact path="/editProject/:id" component="{EditProjects}"/>
+<Route exact path="/editAchievement/:id" component="{EditProjects}"/>
+<Route component={Footer}/>
+<div>
+    );
+    
