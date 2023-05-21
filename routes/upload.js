@@ -14,7 +14,7 @@ cloudinary.config({
 // post upload image
 router.post('/upload', (req, res) => {
   // const { public_id, secure_url } = req.body;
-
+Console.log("upload endpoint")
 
   try {
 
@@ -28,10 +28,13 @@ router.post('/upload', (req, res) => {
       return res.status(400).json({ msg: "size is too big" });
     }
 
-    if (file.mimetype !== "image/jpeg" && file.mimetype !== "image/png") {
-      removeTmp(file.tempFilePath);
+    if (file.mimetype !== "image/jpg" && file.mimetype !== "image/png") {
+     // removeTmp(file.tempFilePath);
       return res.status(400).json({ msg: "incorrect file format" });
     }
+
+    console.log(file.tempFilePath);
+
 
     cloudinary.v2.uploader.upload(
       file.tempFilePath,
@@ -39,7 +42,7 @@ router.post('/upload', (req, res) => {
       async (err, result) => {
         if (err) throw err;
 
-        removeTmp(file.tempFilePath);
+       // removeTmp(file.tempFilePath);
         res.json({ public_id: result.public_id, url: result.secure_url });
       }
     )

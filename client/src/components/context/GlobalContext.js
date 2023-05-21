@@ -55,7 +55,7 @@ useEffect(()=>{
     // for fetching projects
     const res4 = await axios.get(`http://localhost:5000/project`);
     setProjects(res4.data);
-    // console.log(res4.data);
+    console.log(res4.data);
 
     // for fetching achievements
     const res3 = await axios.get(`http://localhost:5000/achievement`);

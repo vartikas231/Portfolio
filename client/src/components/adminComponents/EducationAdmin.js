@@ -3,16 +3,17 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const EducationAdmin = () => {
-  const [education, setEducation] = useState("");
+  const [education, setEducation] = useState('');
   const [educationData, setEducationData] = useState([]);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
   const [messageCond, setMessageCond] = useState(false);
+
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await axios.get(`http://localhost:5000/education`);
-        // console.log(res.data);
         setEducationData(res.data);
       } catch (error) {
         console.log(error);
@@ -71,7 +72,10 @@ const EducationAdmin = () => {
           <h4>Education Component</h4>
           <label htmlFor="text">Education</label>
 
-          <input type="text" value={education} onChange={onChangeEducation} />
+          <input
+           type="text"
+           value={education}
+            onChange={onChangeEducation} />
           <button type="submit">Add item</button>
         </form>
       </div>

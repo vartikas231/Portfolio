@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./admin.css";
 import axios from "axios";
+
 const AboutAdmin = () => {
   const [about, setAbout] = useState('');
   const [aboutData, setAboutData] = useState([]);
@@ -14,20 +15,17 @@ const AboutAdmin = () => {
    const fetchData = async () => {
      try {
        const res = await axios.get(`http://localhost:5000/about`);
-       // console.log(res.data);
        setAboutData(res.data);
      } catch (error) {
        console.log(error);
      }
-   }
+   };
    fetchData();
  }, []);
 
   // onchange
-
-  const onchangeAbout = (e) => {
+const onchangeAbout = (e) => {
     setAbout(e.target.value);
-    // console.log(about);
   };
 
   // submit about
@@ -74,12 +72,11 @@ const AboutAdmin = () => {
           <h4>About Component</h4>
 
           <label htmlFor="text">About</label>
-          <textarea
-            // value={about}
-            onChange={() => onchangeAbout}
-            name="textarea"
-            cols="30"
-            rows="3"
+          <input 
+          type="text"
+            value={about}
+            onChange={onchangeAbout}
+            
           />
           <button type="submit">Add Item</button>
         </form>

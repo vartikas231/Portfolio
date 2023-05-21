@@ -20,16 +20,14 @@ const scrollToElement = (element) => {
   return (
     <React.Fragment>
       <div className="main-title">
-        <h2 className="title contact-title">
-          Contact
-        </h2>
+        <h2 className="title contact-title">Contact</h2>
       </div>
 
       <div className="main-contact">
         <div className="contact">
           <div className="contact-center">
             {/* links */}
-            <div className="contact-center-links">
+            {/* <div className="contact-center-links">
               <h3>Links</h3>
               <div className="contact-links">
                 <li>
@@ -59,15 +57,16 @@ const scrollToElement = (element) => {
                   <Link to="/">Login</Link>
                 </li>
               </div>
-            </div>
+            </div> */}
             {/* media */}
 
-            <div className="contact-center-media">
+            {/* contact-center-media */}
+            <div className=" contact-center-media contact-center-media ">
               <h3>Media</h3>
               <div className="contact-media">
                 <li>
                   <a href="/#">
-                    <i className="fab fa-youtube-square"></i>Youtube
+                    <i className="fab fa-instagram-square"></i>Instagram
                   </a>
                 </li>
                 <li>
@@ -76,7 +75,7 @@ const scrollToElement = (element) => {
                   </a>
                 </li>
                 <li>
-                  <a href="/#">
+                  <a href="https://www.linkedin.com/in/vartika-sharma-b41670204/">
                     <i className="fab fa-linkedin"></i>LinkedIn
                   </a>
                 </li>

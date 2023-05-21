@@ -3,7 +3,7 @@ import { DataContext } from "../context/GlobalContext";
 const Achievement = () => {
   const state = useContext(DataContext);
   const [achievement] = state.achievement;
-  console.log(achievement);
+  
   return (
     <div className="main-container">
       <h2 className="title">Achievements</h2>

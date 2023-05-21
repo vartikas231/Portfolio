@@ -14,7 +14,7 @@ const ProjectsAdmin = () => {
   const [messageCond, setMessageCond] = useState(false);
   const [projectData, setProjectData] = useState([]);
 
-//   // upload image functionality
+  // upload image functionality
 
   const handleUpload = async (e) => {
     e.preventDefault();
@@ -29,20 +29,21 @@ const ProjectsAdmin = () => {
       if (file.type !== "image/jpeg" && file.type !== "image/png") {
         return alert("Incorrect file format ! ");
       }
+      
 
       let formData = new FormData();
-      formData.append("file", file);
+      formData.append("files", file);
       const res = await axios.post('/upload', formData, {
-        headers: { "content-type ": "multipart/form-data" },
+        headers: { "Content-Type": "multipart/form-data" },
       });
 
       setImages(res.data);
     } catch (error) {
-      console.log(error.response.data.msg);
+      console.log(error);
     }
   };
 
-//   // delete image
+  // delete image
 
     const handleDestroy = async () => {
       try {
@@ -53,7 +54,7 @@ const ProjectsAdmin = () => {
       }
     };
 
-  //   // handle change input
+    // handle change input
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
 
@@ -170,39 +171,9 @@ setProjectData(filteredProject);
               <span onClick={handleDestroy}>X</span>
             </div>
           </div>
-          {/*  */}
-          {/*
           
-          
-          {/*  */}
-          {/*  */}
-          {/*  */}
-          {/* */}
-          {/*  */}
-          {/*
-          
-          
-          {/*  */}
-          {/*  */}
-          {/*  */}
-          {/* */}
           <button>Add item</button>
-          {/*  */}
-          {/*
-          
-          
-          {/*  */}
-          {/*  */}
-          {/*  */}
-          {/* */}
-          {/*  */}
-          {/*
-          
-          
-          {/*  */}
-          {/*  */}
-          {/*  */}
-          {/* */}
+         
         </form>
       </div>
 
